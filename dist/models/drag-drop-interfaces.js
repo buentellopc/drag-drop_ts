@@ -1,2 +1,2 @@
-"use strict";
+export {};
 //# sourceMappingURL=drag-drop-interfaces.js.map

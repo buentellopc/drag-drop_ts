@@ -1,4 +1,9 @@
-class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
+import Cmp from "./base-component.js";
+import Autobind from "../decorators/autobind.js";
+import * as Validate from "../util/validation.js";
+import { projectState } from "../state/project-state.js";
+
+export class ProjectInput extends Cmp<HTMLDivElement, HTMLFormElement> {
   titleEl: HTMLInputElement;
   descriptionEl: HTMLTextAreaElement;
   peopleEl: HTMLInputElement;
@@ -32,19 +37,19 @@ class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
     const description = this.descriptionEl.value;
     const people = this.peopleEl.value;
 
-    const titleValidator: InputValidators = {
+    const titleValidator: Validate.InputValidators = {
       value: title,
       required: true,
       minLength: 1,
     };
 
-    const descriptionValidator: InputValidators = {
+    const descriptionValidator: Validate.InputValidators = {
       value: description,
       required: true,
       minLength: 1,
     };
 
-    const peopleValidator: InputValidators = {
+    const peopleValidator: Validate.InputValidators = {
       value: +people,
       required: true,
       min: 1,
@@ -52,9 +57,9 @@ class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
     };
 
     if (
-      !validate(titleValidator) ||
-      !validate(descriptionValidator) ||
-      !validate(peopleValidator)
+      !Validate.validate(titleValidator) ||
+      !Validate.validate(descriptionValidator) ||
+      !Validate.validate(peopleValidator)
     ) {
       alert("Invalid input, please try again");
       return;
@@ -63,7 +68,7 @@ class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
     }
   }
 
-  @autobind
+  @Autobind
   private submitHandler(e: Event) {
     e.preventDefault();
     // console.log("The inputs also need !");

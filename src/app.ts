@@ -1,3 +1,6 @@
-const Input = new ProjectInput();
-const ActiveList = new ProjectList("active");
-const FinishedeList = new ProjectList("finished");
+import { ProjectInput } from "./components/project-input.js";
+import { ProjectList } from "./components/project-list.js";
+
+new ProjectInput();
+new ProjectList("active");
+new ProjectList("finished");

@@ -1,4 +1,4 @@
-export function autobind(
+export default function autobind(
   _target: any,
   _methodName: string,
   descriptor: PropertyDescriptor
